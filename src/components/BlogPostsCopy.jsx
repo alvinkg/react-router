@@ -25,7 +25,7 @@ const BlogPostsCopy = {
   post3
   
 }
-console.log(BlogPostsCopy)
+// console.log(BlogPostsCopy)
 
 
 export default BlogPostsCopy;

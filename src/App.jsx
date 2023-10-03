@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import { BrowserRouter as Router, Routes, Route, Link, Outlet, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 // import BlogPosts from './components/BlogPosts';
 import Posts from './components/Posts';
@@ -13,7 +13,7 @@ import BlogPostsCopy from './components/BlogPostsCopy';
 import './App.css'
 
 function App() {
-
+  //Link avoids href and the slowing down via refresh pages
   return (
     <Router>
       <nav style={{ margin: 10 }}>
@@ -29,14 +29,14 @@ function App() {
       </nav>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='*' element={<NoMatch/>}/>
         <Route path='/posts' element={<Posts />}>
           {/* index prop for the PostLists route specifies the index of /posts. This indicates that whenever the URL http://localhost:3000/posts is triggered, a list of posts is going to be rendered, hence, the component PostsLists */}
           <Route index element={<PostLists BlogPosts={BlogPostsCopy} />} />
           {/* add a dynamic route called :slug in the App function component to render the contents of each post */}
           <Route path=':slug' element={<Post BlogPosts={BlogPostsCopy}/>} />
         </Route>
-        <Route path='/about' element={<About />} />
-        <Route path='*' element={<NoMatch/>}/>
       </Routes>
     
       
